@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import InfoBind from '@/pages/InfoBind/InfoBind'
 import PrescriptionQuery from '@/pages/PrescriptionQuery/PrescriptionQuery'
+import Result from '@/pages/result/Result'
 
 Vue.use(Router)
 
@@ -10,12 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'PrescriptionQuery'
-    },
-    {
-      path: '/HelloWorld',
-      name: 'HelloWorld',
-      component: HelloWorld
+      redirect: 'Result'
     },
     {
       path: '/InfoBind',
@@ -26,6 +21,11 @@ export default new Router({
       path: '/PrescriptionQuery',
       name: 'PrescriptionQuery',
       component: PrescriptionQuery
+    },
+    {
+      path: '/Result',
+      name: 'Result',
+      component: Result
     }
   ]
 })

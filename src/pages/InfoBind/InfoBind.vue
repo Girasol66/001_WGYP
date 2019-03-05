@@ -10,18 +10,43 @@
         <x-button type="primary">按钮</x-button>
       </div>
     </div>
+    <div class="module">
+      <x-table :content-bordered="false" :cell-bordered="false">
+        <tr>
+          <td>序号</td>
+          <td>手机号码</td>
+          <td>证件号码</td>
+          <td>操作</td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>18131234567</td>
+            <td>420182111222112211</td>
+            <td><x-button type="default" :mini="true">解绑</x-button></td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>18131234567</td>
+            <td>420182111222112211</td>
+            <td><x-button type="default" :mini="true">解绑</x-button></td>
+          </tr>
+        </tbody>
+      </x-table>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import { Group, XInput, Selector, XButton } from 'vux'
+import { Group, XInput, Selector, XButton, XTable } from 'vux'
 export default {
   name: 'info-bind',
   components: {
     Group,
     XInput,
     Selector,
-    XButton
+    XButton,
+    XTable
   },
   data () {
     return {

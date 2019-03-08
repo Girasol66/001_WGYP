@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import InfoBind from '@/pages/InfoBind/InfoBind'
 import PrescriptionQuery from '@/pages/PrescriptionQuery/PrescriptionQuery'
 import Result from '@/pages/result/Result'
+import Success from '@/components/Success'
+import Fail from '@/components/Fail'
+import QrCode from '@/pages/qrcode/QrCode'
 
 Vue.use(Router)
 
@@ -10,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'Result'
+      redirect: 'QrCode'
     },
     {
       path: '/InfoBind',
@@ -26,6 +29,21 @@ export default new Router({
       path: '/Result',
       name: 'Result',
       component: Result
+    },
+    {
+      path: '/Success',
+      name: 'Success',
+      component: Success
+    },
+    {
+      path: '/Fail',
+      name: 'Fail',
+      component: Fail
+    },
+    {
+      path: '/QrCode',
+      name: 'QrCode',
+      component: QrCode
     }
   ]
 })

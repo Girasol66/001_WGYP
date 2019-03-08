@@ -13,6 +13,7 @@
   "dependencies": {
     "less": "^2.7.3",
     "mockjs": "^1.0.1-beta3",
+    "qrcode.vue": "^1.6.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vux": "^2.9.2"

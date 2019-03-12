@@ -19,7 +19,7 @@
         <button class="button" @click="bindInfo">绑定</button>
       </div>
     </div>
-    <div class="module">
+    <div class="module module2">
       <x-table :content-bordered="false" :cell-bordered="false">
         <tr>
           <td>序号</td>
@@ -32,7 +32,10 @@
             <td>{{item.index}}</td>
             <td>{{item.mobileNo}}</td>
             <td>{{item.idNo}}</td>
-            <td><x-button type="default" :mini="true">解绑</x-button></td>
+            <td>
+              <button class="btn btn-mini btn-active" @click="unbindInfo(item.id)">解绑</button>
+            </td>
+            <!--<td><x-button type="default" :mini="true">解绑</x-button></td>-->
           </tr>
         </tbody>
       </x-table>
@@ -84,19 +87,20 @@ export default {
           console.log(error)
         })
     },
-    unbindInfo: function () {
-      console.log('bindInfo click')
-      let data = {
-        mobileNo: this.mobileNo,
-        idTypeCode: this.idTypeCode,
-        idNo: this.idNo
-      }
+    unbindInfo: function (data) {
+      console.log('unbindInfo click')
       console.log(data)
-      axios.post(apis.bindUserInfo, data)
-        .then(this.bindInfoSuc)
-        .catch(function (error) {
-          console.log(error)
-        })
+      // let data = {
+      //   mobileNo: this.mobileNo,
+      //   idTypeCode: this.idTypeCode,
+      //   idNo: this.idNo
+      // }
+      // console.log(data)
+      // axios.post(apis.bindUserInfo, data)
+      //   .then(this.bindInfoSuc)
+      //   .catch(function (error) {
+      //     console.log(error)
+      //   })
     },
     bindInfoSuc: function (res) {
       console.log(res)
@@ -161,7 +165,17 @@ export default {
       }
     }
   }
+  .module2 {
+    padding: 0 0.15rem;
+    font-size: @fontSizeTable;
+  }
   .button-wrap {
     padding: 10px 0;
+  }
+  .btn {
+    color: @themeColor;
+    border: 1px solid @themeColor;
+    border-radius: @borderRadius;
+    padding: 0.03rem 0.1rem;
   }
 </style>

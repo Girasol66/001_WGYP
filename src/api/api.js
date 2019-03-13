@@ -6,7 +6,7 @@ const apis = {
     headers: {
       'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/json; charset=UTF-8',
+      'Content-Type': 'application/json; charset=UTF-8', // 'application/x-www-form-urlencoded;charset=UTF-8', // application/json; charset=UTF-8',
       'Access-Control-Allow-Origin': '*'
     }
   },

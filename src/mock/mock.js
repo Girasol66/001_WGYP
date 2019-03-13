@@ -3,12 +3,11 @@ import apis from '../api/api'
 import data from './data'
 
 Mock.setup({
-  timeout: 10000
+  timeout: 15000
 })
 
 // 获取openID
 Mock.mock(apis.getWechatOpenId.url, 'get', function () {
-  debugger
   const success = (parseInt(Math.random() * 100)) % 3 === 0
   const resData = {
     success: success, ...data.data1

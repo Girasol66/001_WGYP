@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Post from '@/pages/test/post'
 import InfoBind from '@/pages/InfoBind/InfoBind'
 import UserQuery from '@/pages/user/UserQuery'
 import PrescriptionQuery from '@/pages/PrescriptionQuery/PrescriptionQuery'
@@ -14,7 +15,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'PrescriptionQuery'
+      redirect: 'InfoBind'
+    },
+    {
+      path: '/Post',
+      name: 'Post',
+      component: Post
     },
     {
       path: '/InfoBind',

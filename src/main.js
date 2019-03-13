@@ -7,7 +7,6 @@ import router from './router'
 // require('./mock/mock.js')
 
 Vue.config.productionTip = false
-Vue.prototype.$routes = router.routes
 
 /* eslint-disable no-new */
 new Vue({

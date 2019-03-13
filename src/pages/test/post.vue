@@ -28,15 +28,15 @@
           <td>操作</td>
         </tr>
         <tbody>
-          <tr v-for="(item, index) in userList" :key="index">
-            <td>{{item.index}}</td>
-            <td>{{item.mobileNo}}</td>
-            <td>{{item.idNo}}</td>
-            <td>
-              <button class="btn btn-mini btn-active" @click="unbindInfo(item.id)">解绑</button>
-            </td>
-            <!--<td><x-button type="default" :mini="true">解绑</x-button></td>-->
-          </tr>
+        <tr v-for="(item, index) in userList" :key="index">
+          <td>{{item.index}}</td>
+          <td>{{item.mobileNo}}</td>
+          <td>{{item.idNo}}</td>
+          <td>
+            <button class="btn btn-mini btn-active" @click="unbindInfo(item.id)">解绑</button>
+          </td>
+          <!--<td><x-button type="default" :mini="true">解绑</x-button></td>-->
+        </tr>
         </tbody>
       </x-table>
     </div>
@@ -45,10 +45,11 @@
 
 <script type="text/ecmascript-6">
 import { Group, XInput, Selector, XButton, XTable } from 'vux'
-import axios from '../../axios/axios'
-import apis from '../../api/api'
+// import axios from '../../axios/axios'
+import axios from 'axios'
+// import apis from '../../api/api'
 export default {
-  name: 'info-bind',
+  name: 'post',
   components: {
     Group,
     XInput,
@@ -82,11 +83,19 @@ export default {
         idNo: this.idNo
       }
       console.log(data)
-      axios.post(apis.bindUserInfo, data)
-        .then(this.bindInfoSuc)
+      axios.defaults.baseURL = 'http://192.168.1.129:8888'
+      axios.post('/userInfo/bindUserInfo', data)
+        .then(function (response) {
+          console.log(response)
+        })
         .catch(function (error) {
           console.log(error)
         })
+      // axios.post('http://192.168.1.92:8888/userInfo/bindUserInfo', data)
+      //   .then(this.bindInfoSuc)
+      //   .catch(function (error) {
+      //     console.log(error)
+      //   })
     },
     unbindInfo: function (data) {
       console.log('unbindInfo click')

@@ -6,8 +6,7 @@ const apis = {
     headers: {
       'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/json; charset=UTF-8', // 'application/x-www-form-urlencoded;charset=UTF-8', // application/json; charset=UTF-8',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json; charset=UTF-8'
     }
   },
   getWechatOpenId: {
@@ -23,12 +22,23 @@ const apis = {
     }
   },
   unbindUserInfo: {
-    url: '/unbindUserInfo'
+    url: '/userInfo/unbindUserInfo'
   },
-  queryUserInfo: {
-    url: '/qryUserInfo',
+  queryUserInfoList: {
+    url: '/userInfo/qryUserInfo',
     params: {
       openId: ''
+    }
+  },
+  queryPrescriptionList: {
+    url: '/userInfo/qryPrescOrders',
+    params: {
+      patPhoneNo: '',
+      patIdNo: '',
+      patIdTypeCode: '',
+      payStatus: '',
+      beginDate: '',
+      endDate: ''
     }
   }
 }

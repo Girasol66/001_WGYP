@@ -45,8 +45,8 @@
 
 <script type="text/ecmascript-6">
 import { Group, XInput, Selector, XButton, XTable } from 'vux'
-import axios from '../../axios/axios'
-import apis from '../../api/api'
+import Controller from './Controller'
+
 export default {
   name: 'info-bind',
   components: {
@@ -66,49 +66,12 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      userList: [
-        {id: '001', index: '01', mobileNo: '176223212778', idNo: '423908776545563567'},
-        {id: '002', index: '02', mobileNo: '176223212778', idNo: '423908776545563567'}
-      ]
+      userList: []
     }
   },
-  methods: {
-    bindInfo: function () {
-      console.log('bindInfo click')
-      let data = {
-        openId: '123',
-        mobileNo: this.mobileNo,
-        idTypeCode: this.idTypeCode,
-        idNo: this.idNo
-      }
-      console.log(data)
-      axios.post(apis.bindUserInfo, data)
-        .then(this.bindInfoSuc)
-        .catch(function (error) {
-          console.log(error)
-        })
-    },
-    unbindInfo: function (data) {
-      console.log('unbindInfo click')
-      console.log(data)
-      // let data = {
-      //   mobileNo: this.mobileNo,
-      //   idTypeCode: this.idTypeCode,
-      //   idNo: this.idNo
-      // }
-      // console.log(data)
-      // axios.post(apis.bindUserInfo, data)
-      //   .then(this.bindInfoSuc)
-      //   .catch(function (error) {
-      //     console.log(error)
-      //   })
-    },
-    bindInfoSuc: function (res) {
-      console.log(res)
-      // this.$vux.toast.show({
-      //   text: '操作失败'
-      // })
-    }
+  methods: Controller,
+  created () {
+    this.queryUserInfoList()
   }
 }
 </script>

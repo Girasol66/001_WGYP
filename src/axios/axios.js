@@ -1,6 +1,6 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import axios from 'axios'
-import qs from 'qs'
+// import qs from 'qs'
 import apis from '../api/api'
 
 axios.defaults.timeout = apis.default.timeout
@@ -13,15 +13,16 @@ axios.interceptors.request.use(
     if (AccessToken) {
       config.headers = {'Authorization': AccessToken}
     }
-    if (config.method === 'post') {
-      config.data = qs.stringify(config.data)
-    }
+    // if (config.method === 'post') {
+    //   config.data = qs.stringify(config.data)
+    // }
     console.log('加载中')
     config = getConfig(config)
     return config
   }, error => {
-    console.log('连接异常')
-    Vue.$vux.loading.hide()
+    console.log('连接异常0')
+    console.log(error)
+    // Vue.$vux.loading.hide()
     return Promise.reject(error)
   })
 
@@ -29,13 +30,14 @@ axios.interceptors.response.use(
   response => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(response.data)
+        resolve(response)
       }, 1000)
     })
   }, error => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log('连接异常')
+        console.log('连接异常1')
+        console.log(resolve)
         resolve(error.response)
       }, 1000)
     })
@@ -48,7 +50,7 @@ const getConfig = (config) => {
   if (data) {
     const {url, params} = opts
     config.url = url
-    config.data = Object.assign(params, data)
+    config.data = Object.assign({}, params, data)
   } else {
     const {url} = opts
     config.url = url

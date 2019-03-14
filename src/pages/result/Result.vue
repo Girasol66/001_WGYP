@@ -16,8 +16,8 @@
     </div>
     <div class="action-area">
       <div class="total-price">合计：¥216.00</div>
-      <router-link>
-        <div class="button orange">自付</div>
+      <div class="button orange">自付</div>
+      <router-link to="/qrcode">
         <div class="button primary">代付</div>
       </router-link>
     </div>

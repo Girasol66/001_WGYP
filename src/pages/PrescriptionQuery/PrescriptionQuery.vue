@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="button-box">
-        <button class="button" @click="queryList">查询</button>
+        <button class="button" @click="queryPrescriptionList">查询</button>
       </div>
     </div>
     <div class="module module2">
@@ -77,6 +77,7 @@
 
 <script type="text/ecmascript-6">
 import { Group, XTable, XButton, Datetime } from 'vux'
+import Controller from './Controller'
 // Vue.use(DatetimePlugin)
 
 export default {
@@ -102,31 +103,9 @@ export default {
       prescriptionList: []
     }
   },
-  methods: {
-    // 查询处方
-    queryList: function () {
-      const data = {
-        patPhoneNo: '001',
-        patIdNo: '32012233331112444',
-        patIdTypeCode: '1',
-        payStatus: 'O',
-        beginDate: this.beginDate,
-        endDate: this.endDate
-      }
-      this.prescriptionList = [
-        {patPatientID: '001', patName: '李大毛', prescNo: '02103', prescAmt: '329.09', payFlg: 'Y'},
-        {patPatientID: '002', patName: '李二毛', prescNo: '02103', prescAmt: '39.09', payFlg: 'N'}
-      ]
-      console.log(data)
-    },
-    // 查看结果
-    checkResult: function (data) {
-      console.log('check')
-      console.log(data)
-      this.$router.push({
-        path: this.$routes.result.path
-      })
-    }
+  methods: Controller,
+  created () {
+    this.queryPrescriptionList()
   }
 }
 </script>

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Post from '@/pages/test/post'
 import InfoBind from '@/pages/InfoBind/InfoBind'
-import UserQuery from '@/pages/user/UserQuery'
 import PrescriptionQuery from '@/pages/PrescriptionQuery/PrescriptionQuery'
 import Result from '@/pages/result/Result'
 import Success from '@/components/Success'
@@ -26,11 +25,6 @@ export default new Router({
       path: '/InfoBind',
       name: 'InfoBind',
       component: InfoBind
-    },
-    {
-      path: '/UserQuery',
-      name: 'UserQuery',
-      component: UserQuery
     },
     {
       path: '/PrescriptionQuery',

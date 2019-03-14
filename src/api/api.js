@@ -13,7 +13,7 @@ const apis = {
 
   },
   bindUserInfo: {
-    url: '/userInfo/bindUserInfo',
+    url: '/user/bindUserInfo',
     params: {
       openId: '',
       mobileNo: '',
@@ -22,16 +22,16 @@ const apis = {
     }
   },
   unbindUserInfo: {
-    url: '/userInfo/unbindUserInfo'
+    url: '/user/unbindUserInfo'
   },
   queryUserInfoList: {
-    url: '/userInfo/qryUserInfo',
+    url: '/user/qryUserInfo',
     params: {
       openId: ''
     }
   },
   queryPrescriptionList: {
-    url: '/userInfo/qryPrescOrders',
+    url: '/order/qryPrescOrders',
     params: {
       patPhoneNo: '',
       patIdNo: '',

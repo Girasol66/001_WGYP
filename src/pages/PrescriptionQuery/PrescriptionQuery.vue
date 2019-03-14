@@ -78,8 +78,6 @@
 <script type="text/ecmascript-6">
 import { Group, XTable, XButton, Datetime } from 'vux'
 import Controller from './Controller'
-// Vue.use(DatetimePlugin)
-
 export default {
   name: 'precription-query',
   components: {
@@ -98,14 +96,14 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      beginDate: '2019-01-02',
-      endDate: '2019-11-13',
+      beginDate: '2019-03-01',
+      endDate: '2019-03-01',
       prescriptionList: []
     }
   },
   methods: Controller,
   created () {
-    // this.queryPrescriptionList()
+    this.queryPrescriptionList()
   }
 }
 </script>

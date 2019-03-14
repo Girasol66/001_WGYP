@@ -5,19 +5,18 @@ const controller = {
   // 查询处方
   queryPrescriptionList: function () {
     const data = {
-      patPhoneNo: '001',
-      patIdNo: '',
-      patIdTypeCode: '1',
+      openId: '5816',
       payStatus: 'Y',
       beginDate: this.beginDate.replace(/-/g, ''),
       endDate: this.endDate.replace(/-/g, '')
     }
     axios.post(apis.queryPrescriptionList, data)
-      .then(function (res) {
+      .then((res) => {
         console.log(res)
         const {status, data} = res
         if (status === 200) {
           console.log(data.returnMsg)
+          this.prescriptionList = data.data
         } else {
           // this.bindInfoFail()
         }
@@ -31,11 +30,19 @@ const controller = {
     // ]
   },
   // 查看结果
-  checkResult: function (data) {
+  checkResult: function (id) {
     console.log('check')
-    console.log(data)
+    console.log(id)
+    const data = this.prescriptionList.filter((item) => {
+      if (item.patPatientID === id) {
+        return true
+      }
+    })
     this.$router.push({
-      path: this.$routes.result.path
+      path: '/Result',
+      query: {
+        data: data
+      }
     })
   }
 }

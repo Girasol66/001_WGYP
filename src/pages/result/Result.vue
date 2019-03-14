@@ -56,6 +56,11 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    console.log(this.$route)
+    console.log(this.$route.query)
+    this.list = this.$route.query.userId
   }
 }
 </script>

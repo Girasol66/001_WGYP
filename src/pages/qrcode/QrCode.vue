@@ -3,7 +3,8 @@
     <div class="qrcode-title">扫描二维码代付</div>
     <div class="qrcode-content">
       <div class="qrcode">
-        <qrcode-vue :value="value" ref="qrCodeUrl"></qrcode-vue>
+        <vue-qr :bgSrc='config.logo' :logoSrc="config.logo" :text="config.value" :size="261"></vue-qr>
+        <!--<qrcode-vue :value="value" ref="qrCodeUrl"></qrcode-vue>-->
       </div>
       <div class="qrcode-price">代付金额：216.00</div>
     </div>
@@ -11,13 +12,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-import QrcodeVue from 'qrcode.vue'
+import VueQr from 'vue-qr'
 export default {
   name: 'qr-code',
-  components: {QrcodeVue},
+  components: {VueQr},
   data () {
     return {
-      value: '172727npm'
+      value: '172727npm',
+      config: {
+        value: 'www.baidu.com', // 显示的值、跳转的地址
+        imagePath: require('../../assets/logo.png') // 中间logo的地址
+      }
     }
   }
 }

@@ -29,11 +29,11 @@
         </tr>
         <tbody>
           <tr v-for="(item, index) in userList" :key="index">
-            <td>{{item.index}}</td>
+            <td>{{index > 9 ? index : '0' + index}}</td>
             <td>{{item.mobileNo}}</td>
             <td>{{item.idNo}}</td>
             <td>
-              <button class="btn btn-mini btn-active" @click="unbindInfo(item.id)">解绑</button>
+              <button class="btn btn-mini btn-active" @click="unbindInfo(item.idNo)">解绑</button>
             </td>
             <!--<td><x-button type="default" :mini="true">解绑</x-button></td>-->
           </tr>

@@ -12,13 +12,13 @@ const controller = {
     }
     console.log(data)
     axios.post(apis.bindUserInfo, data)
-      .then(function (res) {
+      .then((res) => {
         console.log(res)
-        if (res.status === 200) {
-          // this.bindInfoSuc()
-        } else {
-          // this.bindInfoFail()
-        }
+        // if (res.status === 200) {
+        //   // this.bindInfoSuc()
+        // } else {
+        //   // this.bindInfoFail()
+        // }
       })
       .catch(function (error) {
         console.log(error)
@@ -27,14 +27,28 @@ const controller = {
   unbindInfo: function (id) {
     console.log('unbindInfo click')
     console.log(id)
+    let target = this.userList.filter(function (item) {
+      if (item.idNo === id) {
+        return true
+      } else {
+        return false
+      }
+    })
     let data = {
-      mobileNo: this.mobileNo,
-      idTypeCode: this.idTypeCode,
-      idNo: this.idNo
+      openId: '123',
+      mobileNo: target[0].mobileNo,
+      idTypeCode: target[0].idTypeCode,
+      idNo: target[0].idNo
     }
     console.log(data)
-    axios.post(apis.bindUserInfo, data)
-      .then(this.bindInfoSuc)
+    axios.post(apis.unbindUserInfo, data)
+      .then((res) => {
+        const {status, data} = res
+        if (status === 200) {
+          console.log(data.returnMsg)
+        }
+        console.log(res)
+      })
       .catch(function (error) {
         console.log(error)
       })
@@ -45,9 +59,12 @@ const controller = {
     }
     console.log(data)
     axios.post(apis.queryUserInfoList, data)
-      .then(function (res) {
+      .then((res) => {
         console.log(res)
-        if (res.status === 200) {
+        const {status, data} = res
+        if (status === 200) {
+          console.log(data)
+          this.userList = data.data[0].userBindInfos
           // this.bindInfoSuc()
         } else {
           // this.bindInfoFail()

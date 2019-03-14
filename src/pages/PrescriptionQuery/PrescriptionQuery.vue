@@ -98,14 +98,14 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      beginDate: '2019-11-12',
+      beginDate: '2019-01-02',
       endDate: '2019-11-13',
       prescriptionList: []
     }
   },
   methods: Controller,
   created () {
-    this.queryPrescriptionList()
+    // this.queryPrescriptionList()
   }
 }
 </script>

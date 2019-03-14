@@ -6,17 +6,18 @@ const controller = {
   queryPrescriptionList: function () {
     const data = {
       patPhoneNo: '001',
-      patIdNo: '32012233331112444',
+      patIdNo: '',
       patIdTypeCode: '1',
-      payStatus: 'O',
-      beginDate: this.beginDate,
-      endDate: this.endDate
+      payStatus: 'Y',
+      beginDate: this.beginDate.replace(/-/g, ''),
+      endDate: this.endDate.replace(/-/g, '')
     }
     axios.post(apis.queryPrescriptionList, data)
       .then(function (res) {
         console.log(res)
-        if (res.status === 200) {
-          // this.bindInfoSuc()
+        const {status, data} = res
+        if (status === 200) {
+          console.log(data.returnMsg)
         } else {
           // this.bindInfoFail()
         }

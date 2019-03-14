@@ -26,19 +26,19 @@
         <div class="flex-item cell-box">
           <div class="cell-title">开始时间</div>
           <div class="input-box">
-            <div class="input">
+            <div class="datetime-box">
               <datetime v-model="beginDate"></datetime>
+              <span class="datetime-icon"></span>
             </div>
-            <!--<input type="number" class="input" @click="showDatetime">-->
           </div>
         </div>
         <div class="flex-item cell-box">
           <div class="cell-title">结束时间</div>
           <div class="input-box">
-            <div class="input">
+            <div class="datetime-box">
               <datetime v-model="endDate"></datetime>
+              <span class="datetime-icon"></span>
             </div>
-            <!--<input type="number" class="input">-->
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@ export default {
   }
   .input-box {
     padding: 0 0.15rem 0.15rem;
-    .input {
+    .input, .datetime-box {
       width: 100%;
       height: 0.35rem;
       line-height: 0.35rem;
@@ -133,6 +133,26 @@ export default {
       background: @inputBg;
       border: @border;
       border-radius: @borderRadius;
+    }
+    .datetime-box {
+      padding-right: 0;
+      line-height: 0.35rem;
+      text-align: left;
+      position: relative;
+      .datetime-icon {
+        position: absolute;
+        right: 0.005rem;
+        top: 0;
+        width: 0.415rem;
+        height: 0.33rem;
+        display: inline-block;
+        background: #f9fcff;
+        border-radius: 0 @borderRadius @borderRadius 0;
+        background-image: url("../../assets/images/date-icon.png");
+        background-size: 0.2rem;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
     }
     .button[type='primary'] {
       color: @buttonFontColor

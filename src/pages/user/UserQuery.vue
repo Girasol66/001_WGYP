@@ -13,7 +13,6 @@
           <select class="input" name="certiType" v-model="idTypeCode">
             <option v-for="item in certiTypes" :key="item.value" :value="item.value">{{item.text}}</option>
           </select>
-          <!--<select type="number" class="input"></select>-->
         </div>
       </div>
       <div class="cell-box">
@@ -24,15 +23,23 @@
       </div>
       <div class="flex-box">
         <div class="flex-item cell-box">
-          <div class="cell-title">证件号码</div>
+          <div class="cell-title">开始时间</div>
           <div class="input-box">
-            <input type="number" class="input">
+            <div class="datetime-box">
+              <datetime v-model="beginDate"></datetime>
+              <span class="datetime-icon"></span>
+            </div>
           </div>
         </div>
-        <div class="flex-item cell-box"><div class="cell-title">证件号码</div>
+        <div class="flex-item cell-box">
+          <div class="cell-title">结束时间</div>
           <div class="input-box">
-            <input type="number" class="input">
-          </div></div>
+            <div class="datetime-box">
+              <datetime v-model="endDate"></datetime>
+              <span class="datetime-icon"></span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="button-box">
         <button class="button ">查询</button>
@@ -43,13 +50,14 @@
         <tr>
           <td>序号</td>
           <td>处方号</td>
+          <td>姓名</td>
           <td>金额</td>
           <td>缴费状态</td>
           <td>操作</td>
         </tr>
         <tbody>
         <tr v-for="(item, index) in prescriptionList" :key="index">
-          <td>{{item.index}}</td>
+          <td>{{index}}</td>
           <td>{{item.prescNo}}</td>
           <td>{{item.patName}}</td>
           <td>{{item.prescAmt}}</td>
@@ -63,16 +71,19 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { XTable, XButton } from 'vux'
+import { XTable, XButton, Datetime } from 'vux'
 export default {
   name: 'user-query',
   components: {
     XTable,
-    XButton
+    XButton,
+    Datetime
   },
   data () {
     return {
       idTypeCode: 2,
+      beginDate: '开始时间',
+      endDate: '2019/1/2',
       certiTypes: [
         {value: 1, text: '身份证'},
         {value: 2, text: '港澳通行证'},
@@ -100,13 +111,34 @@ export default {
   }
   .input-box {
     padding: 0 0.15rem 0.15rem;
-    .input {
+    .input, .datetime-box {
       width: 100%;
       height: 0.35rem;
       padding: 0 0.13rem;
       background: @inputBg;
+      color: @fontColor;
       border: @border;
       border-radius: @borderRadius;
+    }
+    .datetime-box {
+      padding-right: 0;
+      line-height: 0.35rem;
+      text-align: left;
+      position: relative;
+      .datetime-icon {
+        position: absolute;
+        right: 0.005rem;
+        top: 0;
+        width: 0.415rem;
+        height: 0.33rem;
+        display: inline-block;
+        background: #f9fcff;
+        border-radius: 0 @borderRadius @borderRadius 0;
+        background-image: url("../../assets/images/date-icon.png");
+        background-size: 0.2rem;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
     }
     .button[type='primary'] {
       color: @buttonFontColor

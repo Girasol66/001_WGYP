@@ -12,14 +12,7 @@ const controller = {
     }
     console.log(data)
     axios.post(apis.bindUserInfo, data)
-      .then((res) => {
-        console.log(res)
-        // if (res.status === 200) {
-        //   // this.bindInfoSuc()
-        // } else {
-        //   // this.bindInfoFail()
-        // }
-      })
+      .then(this.requestSuc)
       .catch(function (error) {
         console.log(error)
       })
@@ -42,13 +35,7 @@ const controller = {
     }
     console.log(data)
     axios.post(apis.unbindUserInfo, data)
-      .then((res) => {
-        const {status, data} = res
-        if (status === 200) {
-          console.log(data.returnMsg)
-        }
-        console.log(res)
-      })
+      .then(this.requestSuc)
       .catch(function (error) {
         console.log(error)
       })
@@ -80,8 +67,20 @@ const controller = {
     // ]
     // console.log('query')
   },
-  bindInfoSuc: function (res) {
-    console.log('操作成功')
+  requestSuc: function (res) {
+    console.log('操request成功')
+    const {status, data} = res
+    if (status === 200) {
+      this.$vux.toast.show({
+        text: data.returnMsg
+      })
+      console.log(data.returnMsg)
+    } else {
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: data.returnMsg
+      })
+    }
   },
   bindInfoFail: function (res) {
     console.log('fail')

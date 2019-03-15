@@ -6,7 +6,8 @@ const apis = {
     headers: {
       'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/json; charset=UTF-8'
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Access-Control-Allow-Origin': '*' // 跨域
     }
   },
   getWechatOpenId: {

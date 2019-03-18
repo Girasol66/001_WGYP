@@ -65,7 +65,7 @@
           <td>{{item.payFlg == 'Y' ? '已缴' : '待缴'}}</td>
           <td>
             <router-link to="/result">
-              <button class="btn btn-mini btn-active" @click="checkResult(item.id)">查看</button>
+              <button class="btn btn-mini btn-active" @click="checkResult(item)">查看</button>
             </router-link>
           </td>
         </tr>

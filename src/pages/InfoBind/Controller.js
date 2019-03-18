@@ -4,8 +4,9 @@ import apis from '../../api/api'
 const controller = {
   bindInfo: function () {
     console.log('bindInfo click')
+    const {openId} = sessionStorage
     let data = {
-      openId: '123',
+      openId: openId,
       mobileNo: this.mobileNo,
       idTypeCode: this.idTypeCode,
       idNo: this.idNo
@@ -27,8 +28,9 @@ const controller = {
         return false
       }
     })
+    const {openId} = sessionStorage
     let data = {
-      openId: '123',
+      openId: openId,
       mobileNo: target[0].mobileNo,
       idTypeCode: target[0].idTypeCode,
       idNo: target[0].idNo
@@ -41,8 +43,9 @@ const controller = {
       })
   },
   queryUserInfoList: function () {
+    const {openId} = sessionStorage
     let data = {
-      openId: '123'
+      openId: openId
     }
     console.log(data)
     axios.post(apis.queryUserInfoList, data)
@@ -60,12 +63,6 @@ const controller = {
       .catch(function (error) {
         console.log(error)
       })
-    // this.userList = [
-    //   {id: '001', index: '01', mobileNo: '176223212778', idNo: '423908776545563567'},
-    //   {id: '001', index: '02', mobileNo: '176223212778', idNo: '423908776545563567'},
-    //   {id: '002', index: '03', mobileNo: '176223212778', idNo: '423908776545563567'}
-    // ]
-    // console.log('query')
   },
   requestSuc: function (res) {
     console.log('操request成功')

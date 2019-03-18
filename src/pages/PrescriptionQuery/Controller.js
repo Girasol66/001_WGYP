@@ -30,18 +30,26 @@ const controller = {
     // ]
   },
   // 查看结果
-  checkResult: function (id) {
+  checkResult: function (item) {
     console.log('check')
-    console.log(id)
-    const data = this.prescriptionList.filter((item) => {
-      if (item.patPatientID === id) {
-        return true
-      }
-    })
+    // console.log(item.id)
+    // const id = item.id
+    const orderNo = item.orderNo
+    const payFlg = item.payFlg
+    const detail = item.detail
+    // const data = this.prescriptionList.filter((item) => {
+    //   if (item.patPatientID === id) {
+    //     return true
+    //   }
+    // })
     this.$router.push({
       path: '/Result',
       query: {
-        data: data
+        orderNo: orderNo,
+        payFlg: payFlg,
+        prescNo: '',
+        prescAmt: '',
+        detail: detail
       }
     })
   }

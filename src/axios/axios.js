@@ -1,6 +1,5 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import axios from 'axios'
-// import qs from 'qs'
 import apis from '../api/api'
 
 axios.defaults.timeout = apis.default.timeout
@@ -13,16 +12,16 @@ axios.interceptors.request.use(
     if (AccessToken) {
       config.headers = {'Authorization': AccessToken}
     }
-    // if (config.method === 'post') {
-    //   config.data = qs.stringify(config.data)
-    // }
+    Vue.$vux.loading.show({
+      text: '加载中...'
+    })
     console.log('加载中')
     config = getConfig(config)
     return config
   }, error => {
     console.log('连接异常0')
+    Vue.$vux.loading.hide()
     console.log(error)
-    // Vue.$vux.loading.hide()
     return Promise.reject(error)
   })
 
@@ -30,12 +29,18 @@ axios.interceptors.response.use(
   response => {
     return new Promise((resolve) => {
       setTimeout(() => {
+        Vue.$vux.loading.hide()
         resolve(response)
       }, 1000)
     })
   }, error => {
     return new Promise((resolve) => {
       setTimeout(() => {
+        Vue.$vux.toast.show({
+          type: 'cancel',
+          text: '连接异常'
+        })
+        Vue.$vux.loading.hide()
         console.log('连接异常1')
         console.log(resolve)
         resolve(error.response)

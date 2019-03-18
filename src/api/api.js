@@ -11,7 +11,8 @@ const apis = {
     }
   },
   getWechatOpenId: {
-
+    url: '/user/getOpenId',
+    params: {}
   },
   bindUserInfo: {
     url: '/user/bindUserInfo',
@@ -40,6 +41,30 @@ const apis = {
       payStatus: '',
       beginDate: '',
       endDate: ''
+    }
+  },
+  querySelfPayOrder: {
+    url: '/pay/orderSelfPay',
+    params: {
+      orderNo: '',
+      prescNo: '',
+      prescAmt: ''
+    }
+  },
+  queryAnotherPayOrder: {
+    url: '/pay/orderAnotherPay',
+    params: {
+      orderNo: '',
+      prescNo: '',
+      prescAmt: ''
+    }
+  },
+  // 处方订单支付结果查询
+  queryOrderPayRes: {
+    url: '/qryOrderPayRes',
+    params: {
+      orderNo: '',
+      prescNo: ''
     }
   }
 }

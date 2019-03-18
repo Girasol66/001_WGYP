@@ -29,6 +29,46 @@ const controller = {
     //   {patPatientID: '002', patName: '李二毛', prescNo: '02103', prescAmt: '39.09', payFlg: 'N'}
     // ]
   },
+  // 自付
+  querySelfPayOrder: function () {
+    const data = {
+      orderNo: this.orderNo,
+      prescNo: this.prescNo,
+      prescAmt: this.prescAmt
+    }
+    axios.post(apis.querySelfPayOrder, data)
+      .then(function (res) {
+        console.log(res)
+        if (res.status === 200) {
+          // this.bindInfoSuc()
+        } else {
+          // this.bindInfoFail()
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  },
+  // 他付
+  queryAnotherPayOrder: function () {
+    const data = {
+      orderNo: '',
+      prescNo: '',
+      prescAmt: ''
+    }
+    axios.post(apis.queryAnotherPayOrder, data)
+      .then(function (res) {
+        console.log(res)
+        if (res.status === 200) {
+          // this.bindInfoSuc()
+        } else {
+          // this.bindInfoFail()
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  },
   // 查看结果
   checkResult: function (data) {
     console.log('check')

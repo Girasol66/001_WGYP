@@ -2,21 +2,21 @@
   <div>
     <div class="module">
       <div class="list-title">
-        <span class="list-title-item">处方编号：0003821</span>
-        <span class="list-title-item">缴费状态：待缴</span>
+        <span class="list-title-item">处方编号：{{orderNo}}</span>
+        <span class="list-title-item">缴费状态：{{payFlg}}</span>
       </div>
       <div class="pic-list" v-for="(item, index) in list" :key="index">
         <img :src="item.img" alt="" class="list-pic">
         <div class="list-info">
-          <div class="list-title">{{item.name}}</div>
-          <div class="list-sub-title">规格：{{item.type}}</div>
-          <div class="price">¥{{item.price}}</div>
+          <div class="list-title">{{item.drugName}}</div>
+          <div class="list-sub-title">规格：{{item.type}} 数量：{{item.drugCnt}} {{item.drugUnit}}</div>
+          <div class="price">¥{{item.drugPrice}}</div>
         </div>
       </div>
     </div>
     <div class="action-area">
       <div class="total-price">合计：¥216.00</div>
-      <div class="button orange">自付</div>
+      <div class="button orange" @click="querySelfPayOrder">自付</div>
       <router-link to="/qrcode">
         <div class="button primary">代付</div>
       </router-link>
@@ -25,10 +25,15 @@
 </template>
 
 <script type="text/ecmascript-6">
+import Controller from './Controller'
 export default {
   name: 'result',
   data () {
     return {
+      orderNo: '',
+      payFlg: '',
+      prescNo: '',
+      prescAmt: '',
       list: [
         {
           name: '立卫克 奥美拉唑肠溶胶囊',
@@ -57,10 +62,14 @@ export default {
       ]
     }
   },
+  methods: Controller,
   created () {
     console.log(this.$route)
     console.log(this.$route.query)
-    this.list = this.$route.query.userId
+    this.orderNo = this.$route.query.orderNo
+    const payFlg = this.$route.query.payFlg
+    this.payFlg = payFlg === 'Y' ? '已缴' : '待缴'
+    this.list = this.$route.query.detail
   }
 }
 </script>

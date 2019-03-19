@@ -58,9 +58,9 @@ export default {
   },
   data () {
     return {
-      mobileNo: 18112345678,
-      idNo: 320182111233458734,
-      idTypeCode: 2,
+      mobileNo: '',
+      idNo: '',
+      idTypeCode: 1,
       certiTypes: [
         {value: 1, text: '身份证'},
         {value: 2, text: '港澳通行证'},

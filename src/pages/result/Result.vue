@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="action-area">
-      <div class="total-price">合计：¥216.00</div>
+      <div class="total-price">合计：¥{{prescAmt}}</div>
       <div class="button orange" @click="querySelfPayOrder">自付</div>
       <!--<router-link to="/qrcode">-->
       <div class="button primary" @click="queryAnotherPayOrder">代付</div>

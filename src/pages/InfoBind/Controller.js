@@ -71,6 +71,7 @@ const controller = {
       this.$vux.toast.show({
         text: data.returnMsg
       })
+      this.queryUserInfoList()
       console.log(data.returnMsg)
     } else {
       this.$vux.toast.show({
@@ -78,9 +79,6 @@ const controller = {
         text: data.returnMsg
       })
     }
-  },
-  bindInfoFail: function (res) {
-    console.log('fail')
   }
 }
 export default controller

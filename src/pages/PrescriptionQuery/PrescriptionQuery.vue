@@ -88,9 +88,9 @@ export default {
   },
   data () {
     return {
-      patPhoneNo: '13812818188',
-      patIdNo: '320123133333',
-      patIdTypeCode: 2,
+      patPhoneNo: '',
+      patIdNo: '',
+      patIdTypeCode: 1,
       certiTypes: [
         {value: 1, text: '身份证'},
         {value: 2, text: '港澳通行证'},
@@ -150,6 +150,12 @@ export default {
         background-size: 0.2rem;
         background-position: center;
         background-repeat: no-repeat;
+      }
+      .weui-cell {
+        padding: 0;
+        .weui-cell__ft {
+          text-align: left;
+        }
       }
     }
     .button[type='primary'] {

@@ -39,7 +39,9 @@ const controller = {
     axios.post(apis.querySelfPayOrder, data)
       .then(function (res) {
         console.log(res)
-        if (res.status === 200) {
+        const {status, data} = res
+        if (status === 200) {
+          window.location.replace(data.payUrl)
           // this.bindInfoSuc()
         } else {
           // this.bindInfoFail()
@@ -52,14 +54,16 @@ const controller = {
   // 他付
   queryAnotherPayOrder: function () {
     const data = {
-      orderNo: '',
-      prescNo: '',
-      prescAmt: ''
+      orderNo: this.orderNo,
+      prescNo: this.prescNo,
+      prescAmt: this.prescAmt
     }
     axios.post(apis.queryAnotherPayOrder, data)
-      .then(function (res) {
+      .then((res) => {
         console.log(res)
-        if (res.status === 200) {
+        const {status, data} = res
+        if (status === 200) {
+          this.toQrCode(data.payUrl)
           // this.bindInfoSuc()
         } else {
           // this.bindInfoFail()
@@ -68,6 +72,15 @@ const controller = {
       .catch(function (error) {
         console.log(error)
       })
+  },
+  toQrCode: function (payUrl) {
+    console.log(payUrl)
+    this.$router.push({
+      path: '/QrCode',
+      query: {
+        payUrl: payUrl
+      }
+    })
   },
   // 查看结果
   checkResult: function (data) {

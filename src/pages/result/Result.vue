@@ -17,9 +17,9 @@
     <div class="action-area">
       <div class="total-price">合计：¥216.00</div>
       <div class="button orange" @click="querySelfPayOrder">自付</div>
-      <router-link to="/qrcode">
-        <div class="button primary">代付</div>
-      </router-link>
+      <!--<router-link to="/qrcode">-->
+      <div class="button primary" @click="queryAnotherPayOrder">代付</div>
+      <!--</router-link>-->
     </div>
   </div>
 </template>
@@ -70,6 +70,8 @@ export default {
     const payFlg = this.$route.query.payFlg
     this.payFlg = payFlg === 'Y' ? '已缴' : '待缴'
     this.list = this.$route.query.detail
+    this.prescNo = this.$route.query.prescNo
+    this.prescAmt = this.$route.query.prescAmt
   }
 }
 </script>

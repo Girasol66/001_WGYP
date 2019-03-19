@@ -4,8 +4,9 @@ import apis from '../../api/api'
 const controller = {
   // 查询处方
   queryPrescriptionList: function () {
+    const {openId} = sessionStorage
     const data = {
-      openId: '5816',
+      openId: openId,
       payStatus: 'Y',
       beginDate: this.beginDate.replace(/-/g, ''),
       endDate: this.endDate.replace(/-/g, '')
@@ -47,8 +48,8 @@ const controller = {
       query: {
         orderNo: orderNo,
         payFlg: payFlg,
-        prescNo: '',
-        prescAmt: '',
+        prescNo: item.prescNo,
+        prescAmt: item.prescAmt,
         detail: detail
       }
     })

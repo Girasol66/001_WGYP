@@ -24,6 +24,10 @@ export default {
         imagePath: require('../../assets/logo.png') // 中间logo的地址
       }
     }
+  },
+  created () {
+    console.log(this.$route.query)
+    this.config.value = this.$route.query.payUrl
   }
 }
 </script>

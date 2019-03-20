@@ -7,7 +7,7 @@ const controller = {
     const {openId} = sessionStorage
     const data = {
       openId: openId,
-      payStatus: 'Y',
+      payStatus: 'O',
       beginDate: this.beginDate.replace(/-/g, ''),
       endDate: this.endDate.replace(/-/g, '')
     }

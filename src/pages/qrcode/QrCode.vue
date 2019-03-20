@@ -6,7 +6,7 @@
         <vue-qr :bgSrc='config.logo' :logoSrc="config.logo" :text="config.value" :size="261"></vue-qr>
         <!--<qrcode-vue :value="value" ref="qrCodeUrl"></qrcode-vue>-->
       </div>
-      <div class="qrcode-price">代付金额：216.00</div>
+      <div class="qrcode-price">代付金额：￥{{prescAmt}}</div>
     </div>
   </div>
 </template>
@@ -28,6 +28,7 @@ export default {
   created () {
     console.log(this.$route.query)
     this.config.value = this.$route.query.payUrl
+    this.prescAmt = this.$route.query.prescAmt
   }
 }
 </script>

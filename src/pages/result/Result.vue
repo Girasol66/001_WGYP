@@ -34,32 +34,33 @@ export default {
       payFlg: '',
       prescNo: '',
       prescAmt: '',
-      list: [
-        {
-          name: '立卫克 奥美拉唑肠溶胶囊',
-          type: '20mgx14粒/瓶',
-          price: '1.00',
-          img: 'https://c1.yaofangwang.net/common/upload/medicine/555/555843/7ded6c1a-64d1-44ad-97e8-030d62ca07261909.jpg_300x300.jpg'
-        },
-        {
-          name: '葵花 胃康灵胶囊',
-          type: '0.4gx12粒x2板/盒',
-          price: '13.00',
-          img: 'https://c1.yaofangwang.net/common/upload/medicine/533/533788/ee7901a8-a79e-43e7-bf5f-6b5c1112afcb1244.jpg_300x300.jpg'
-        },
-        {
-          name: '立卫克 奥美拉唑肠溶胶囊',
-          type: '20mgx14粒/瓶',
-          price: '1.00',
-          img: 'https://c1.yaofangwang.net/common/upload/medicine/533/533647/e4febc86-c7d3-4686-a16c-72a77543e85a9931.jpg_300x300.jpg'
-        },
-        {
-          name: '葵花 胃康灵胶囊',
-          type: '0.4gx12粒x2板/盒',
-          price: '13.00',
-          img: 'https://c1.yaofangwang.net/common/upload/medicine/318/318367/c00dd96d-ccc9-4904-b1a7-904e018174b87434.jpg_300x300.jpg'
-        }
-      ]
+      list: []
+      // list: [
+      //   {
+      //     name: '立卫克 奥美拉唑肠溶胶囊',
+      //     type: '20mgx14粒/瓶',
+      //     price: '1.00',
+      //     img: 'https://c1.yaofangwang.net/common/upload/medicine/555/555843/7ded6c1a-64d1-44ad-97e8-030d62ca07261909.jpg_300x300.jpg'
+      //   },
+      //   {
+      //     name: '葵花 胃康灵胶囊',
+      //     type: '0.4gx12粒x2板/盒',
+      //     price: '13.00',
+      //     img: 'https://c1.yaofangwang.net/common/upload/medicine/533/533788/ee7901a8-a79e-43e7-bf5f-6b5c1112afcb1244.jpg_300x300.jpg'
+      //   },
+      //   {
+      //     name: '立卫克 奥美拉唑肠溶胶囊',
+      //     type: '20mgx14粒/瓶',
+      //     price: '1.00',
+      //     img: 'https://c1.yaofangwang.net/common/upload/medicine/533/533647/e4febc86-c7d3-4686-a16c-72a77543e85a9931.jpg_300x300.jpg'
+      //   },
+      //   {
+      //     name: '葵花 胃康灵胶囊',
+      //     type: '0.4gx12粒x2板/盒',
+      //     price: '13.00',
+      //     img: 'https://c1.yaofangwang.net/common/upload/medicine/318/318367/c00dd96d-ccc9-4904-b1a7-904e018174b87434.jpg_300x300.jpg'
+      //   }
+      // ]
     }
   },
   methods: Controller,

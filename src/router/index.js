@@ -7,6 +7,7 @@ import Result from '@/pages/result/Result'
 import Success from '@/components/Success'
 import Fail from '@/components/Fail'
 import QrCode from '@/pages/qrcode/QrCode'
+import About from '@/pages/home/about'
 
 Vue.use(Router)
 
@@ -50,6 +51,11 @@ export default new Router({
       path: '/QrCode',
       name: 'QrCode',
       component: QrCode
+    },
+    {
+      path: '/About',
+      name: 'About',
+      component: About
     }
   ]
 })

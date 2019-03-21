@@ -2,8 +2,12 @@ import axios from '../../axios/axios'
 import apis from '../../api/api'
 
 const controller = {
-  bindInfo: function () {
-    console.log('bindInfo click')
+  bindInfo: function (params) {
+    if (params !== 'new') {
+      this.mobileNo = params.mobileNo
+      this.idTypeCode = params.idTypeCode
+      this.idNo = params.idNo
+    }
     const {openId} = sessionStorage
     let data = {
       openId: openId,
@@ -13,13 +17,15 @@ const controller = {
     }
     console.log(data)
     axios.post(apis.bindUserInfo, data)
-      .then(this.requestSuc)
+      .then((res) => {
+        this.requestSuc(res)
+        this.resetFormData()
+      })
       .catch(function (error) {
         console.log(error)
       })
   },
   unbindInfo: function (id) {
-    console.log('unbindInfo click')
     console.log(id)
     let target = this.userList.filter(function (item) {
       if (item.idNo === id) {
@@ -54,8 +60,14 @@ const controller = {
         const {status, data} = res
         if (status === 200) {
           console.log(data)
-          this.userList = data.data[0].userBindInfos
-          // this.bindInfoSuc()
+          const listdata = data.data
+          if (listdata && listdata.length) {
+            this.userList = listdata[0].userBindInfo
+          } else {
+            this.$vux.toast.show({
+              text: '暂无数据'
+            })
+          }
         } else {
           // this.bindInfoFail()
         }
@@ -64,8 +76,13 @@ const controller = {
         console.log(error)
       })
   },
+  resetFormData: function () {
+    this.mobileNo = ''
+    this.idNo = ''
+    this.idTypeCode = 1
+  },
   requestSuc: function (res) {
-    console.log('操request成功')
+    console.log('操作成功')
     const {status, data} = res
     if (status === 200) {
       this.$vux.toast.show({

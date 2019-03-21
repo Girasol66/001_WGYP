@@ -16,7 +16,7 @@
         <input class="cell-input" type="number" v-model="idNo">
       </div>
       <div class="button-cell">
-        <button class="button" @click="bindInfo">绑定</button>
+        <button class="button" @click="bindInfo('new')">绑定</button>
       </div>
     </div>
     <div class="module module2">
@@ -29,13 +29,13 @@
         </tr>
         <tbody>
           <tr v-for="(item, index) in userList" :key="index">
-            <td>{{index > 9 ? index : '0' + index}}</td>
+            <td>{{index > 8 ? (1+index) : '0' + (1+index)}}</td>
             <td>{{item.mobileNo}}</td>
             <td>{{item.idNo}}</td>
             <td>
-              <button class="btn btn-mini btn-active" @click="unbindInfo(item.idNo)">解绑</button>
+              <button v-if="item.status==='Y'" class="btn btn-mini btn-alert" @click="unbindInfo(item.idNo)">解绑</button>
+              <button v-else-if="item.status==='N'" class="btn btn-mini btn-active" @click="bindInfo(item)">绑定</button>
             </td>
-            <!--<td><x-button type="default" :mini="true">解绑</x-button></td>-->
           </tr>
         </tbody>
       </x-table>
@@ -66,6 +66,11 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
+      info: {
+        mobileNo: '',
+        idNo: '',
+        idTypeCode: 1
+      },
       userList: []
     }
   },
@@ -78,68 +83,13 @@ export default {
 
 <style scoped lang="less">
   @import '../../assets/less/variable';
+  @import '../../assets/less/form';
   .module {
     background: #fafafa;
     margin-bottom: 10px;
-    .input-cell {
-      display: flex;
-      flex-direction: row;
-      background: @white;
-      height: 0.425rem;
-      line-height: 0.425rem;
-      padding: 0 0.15rem;
-      position: relative;
-      .cell-title {
-        width: 0.75rem;
-        text-align: left;
-        color: #999;
-      }
-      .cell-input {
-        flex:1;
-        text-align: right;
-        border: none;
-        color: @fontColor;
-      }
-      select {
-        /*direction: rtl;*/
-        text-align-last: right;
-        background: none;
-      }
-      &:before {
-        content: '';
-        border-top: 1px solid #d9d9d9;
-        position: absolute;
-        left: 0.15rem;
-        right: 0;
-        bottom: 0;
-        transform: scaleY(0.5);
-      }
-    }
-    .button-cell {
-      padding: 0.265rem 0.15rem;
-      background: @white;
-      .button {
-        width:100%;
-        height: 0.475rem;
-        line-height: 0.475rem;
-        font-size: 0.18rem;
-        color: @white;
-        background: @themeBgColor;
-        border-radius: @borderRadius;
-      }
-    }
   }
   .module2 {
     padding: 0 0.15rem;
     font-size: @fontSizeTable;
-  }
-  .button-wrap {
-    padding: 10px 0;
-  }
-  .btn {
-    color: @themeColor;
-    border: 1px solid @themeColor;
-    border-radius: @borderRadius;
-    padding: 0.03rem 0.1rem;
   }
 </style>

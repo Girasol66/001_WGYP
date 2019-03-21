@@ -1,0 +1,56 @@
+.input-cell {
+  display: flex;
+  flex-direction: row;
+  background: @white;
+  height: 0.425rem;
+  line-height: 0.425rem;
+  padding: 0 0.15rem;
+  position: relative;
+  .cell-title {
+    width: 0.75rem;
+    text-align: left;
+    color: #000; //#999;
+  }
+  .cell-input {
+    flex:1;
+    text-align: right;
+    border: none;
+    color: #999; // @fontColor;
+  }
+  select {
+    text-align-last: right;
+    background: none;
+  }
+  &:before {
+    content: '';
+    border-top: 1px solid #d9d9d9;
+    position: absolute;
+    left: 0.15rem;
+    right: 0;
+    top: 0;
+    transform: scaleY(0.5);
+  }
+}
+.button-cell {
+  padding: 0.265rem 0.15rem;
+  background: @white;
+  .button {
+    width:100%;
+    height: 0.475rem;
+    line-height: 0.475rem;
+    font-size: 0.18rem;
+    color: @white;
+    background: @themeBgColor;
+    border-radius: @borderRadius;
+  }
+}
+.btn {
+  color: @themeColor;
+  border: 1px solid @themeColor;
+  border-radius: @borderRadius;
+  padding: 0.03rem 0.1rem;
+  &.btn-alert {
+    color: @alertColor;
+    border-color: @alertColor;
+  }
+}

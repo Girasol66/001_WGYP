@@ -1,48 +1,25 @@
 <template>
   <div>
     <div class="module">
-      <div class="cell-box">
-        <div class="cell-title">手机号码</div>
-        <div class="input-box">
-          <input type="number" class="input" v-model="patPhoneNo">
+      <group>
+        <div class="input-cell">
+          <div class="cell-title">手机号码</div>
+          <input class="cell-input" type="number" v-model="patPhoneNo">
         </div>
-      </div>
-      <div class="cell-box">
-        <div class="cell-title">证件类型</div>
-        <div class="input-box">
-          <select class="input" name="certiType" v-model="patIdTypeCode">
+        <div class="input-cell">
+          <div class="cell-title">证件类型</div>
+          <select class="cell-input" name="certiType" v-model="patIdTypeCode">
             <option v-for="item in certiTypes" :key="item.value" :value="item.value">{{item.text}}</option>
           </select>
-          <!--<select type="number" class="input"></select>-->
         </div>
-      </div>
-      <div class="cell-box">
-        <div class="cell-title">证件号码</div>
-        <div class="input-box">
-          <input type="number" class="input" v-model="patIdNo">
+        <div class="input-cell">
+          <div class="cell-title">证件号码</div>
+          <input class="cell-input" type="number" v-model="patIdNo">
         </div>
-      </div>
-      <div class="flex-box">
-        <div class="flex-item cell-box">
-          <div class="cell-title">开始时间</div>
-          <div class="input-box">
-            <div class="datetime-box">
-              <datetime v-model="beginDate"></datetime>
-              <span class="datetime-icon"></span>
-            </div>
-          </div>
-        </div>
-        <div class="flex-item cell-box">
-          <div class="cell-title">结束时间</div>
-          <div class="input-box">
-            <div class="datetime-box">
-              <datetime v-model="endDate"></datetime>
-              <span class="datetime-icon"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="button-box">
+        <datetime title="开始时间" v-model="beginDate"></datetime>
+        <datetime title="结束时间" v-model="endDate"></datetime>
+      </group>
+      <div class="button-cell">
         <button class="button" @click="queryPrescriptionList">查询</button>
       </div>
     </div>
@@ -96,8 +73,8 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      beginDate: '2019-03-01',
-      endDate: '2019-03-01',
+      beginDate: '',
+      endDate: new Date().toLocaleDateString(),
       prescriptionList: []
     }
   },
@@ -110,83 +87,9 @@ export default {
 
 <style scoped lang="less">
   @import '../../assets/less/variable';
-  .cell-box {
-    .cell-title {
-      text-align: left;
-      height: 0.3rem;
-      line-height: 0.3rem;
-      padding: 0 0.15rem;
-      color: @labelColor;
-    }
-  }
-  .input-box {
-    padding: 0 0.15rem 0.15rem;
-    .input, .datetime-box {
-      width: 100%;
-      height: 0.35rem;
-      line-height: 0.35rem;
-      text-align: left;
-      padding: 0 0.13rem;
-      color: @fontColor;
-      background: @inputBg;
-      border: @border;
-      border-radius: @borderRadius;
-    }
-    .datetime-box {
-      padding-right: 0;
-      line-height: 0.35rem;
-      text-align: left;
-      position: relative;
-      .datetime-icon {
-        position: absolute;
-        right: 0.005rem;
-        top: 0;
-        width: 0.415rem;
-        height: 0.33rem;
-        display: inline-block;
-        background: #f9fcff;
-        border-radius: 0 @borderRadius @borderRadius 0;
-        background-image: url("../../assets/images/date-icon.png");
-        background-size: 0.2rem;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-      .weui-cell {
-        padding: 0;
-        .weui-cell__ft {
-          text-align: left;
-        }
-      }
-    }
-    .button[type='primary'] {
-      color: @buttonFontColor
-    }
-  }
-  .button-box {
-    padding: 0.22rem 0.15rem 0.20rem;
-    .button {
-      width: 100%;
-      height: 0.47rem;
-      background: @buttonColor;
-      color: @buttonFontColor;
-      border-radius: @borderRadius;
-    }
-  }
-  .flex-box {
-    display: flex;
-    flex-direction: row;
-    .flex-item {
-      flex: 1;
-    }
-  }
+  @import '../../assets/less/form';
   .module2 {
     padding: 0 0.15rem;
     font-size: @fontSizeTable;
-  }
-  .btn {
-    color: @themeColor;
-    border: 1px solid @themeColor;
-    border-radius: @borderRadius;
-    padding: 0.03rem 0.1rem;
   }
 </style>

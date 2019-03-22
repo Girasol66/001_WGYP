@@ -12,8 +12,7 @@ import apis from './api/api'
 export default {
   name: 'App',
   created () {
-    this.exeLogin()
-    // this.getAccessToken()
+    // this.exeLogin()
   },
   methods: {
     exeLogin () {

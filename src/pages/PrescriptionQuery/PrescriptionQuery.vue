@@ -16,8 +16,8 @@
           <div class="cell-title">证件号码</div>
           <input class="cell-input" type="number" v-model="patIdNo">
         </div>
-        <datetime title="开始时间" v-model="beginDate"></datetime>
-        <datetime title="结束时间" v-model="endDate"></datetime>
+        <datetime title="开始时间" v-model="beginDate" format="YYYY-MM-DD"></datetime>
+        <datetime title="结束时间" v-model="endDate" format="YYYY-MM-DD"></datetime>
       </group>
       <div class="button-cell">
         <button class="button" @click="queryPrescriptionList">查询</button>
@@ -54,6 +54,7 @@
 
 <script type="text/ecmascript-6">
 import { Group, XTable, XButton, Datetime } from 'vux'
+import {dateFormat, getSpecifiedDate} from '../../utils/index'
 import Controller from './Controller'
 export default {
   name: 'precription-query',
@@ -73,8 +74,8 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      beginDate: '',
-      endDate: new Date().toLocaleDateString(),
+      beginDate: dateFormat(getSpecifiedDate(-6)),
+      endDate: dateFormat(new Date()),
       prescriptionList: []
     }
   },

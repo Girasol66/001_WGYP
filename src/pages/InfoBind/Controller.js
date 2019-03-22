@@ -9,6 +9,9 @@ const controller = {
       this.idNo = params.idNo
     }
     const {openId} = sessionStorage
+    if (!this.validateForm()) {
+      return false
+    }
     let data = {
       openId: openId,
       mobileNo: this.mobileNo,
@@ -81,10 +84,44 @@ const controller = {
     this.idNo = ''
     this.idTypeCode = 1
   },
+  validateForm: function () {
+    if (!this.mobileNo) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '手机号码不能为空'
+      })
+      return false
+    } else if (this.mobileNo.length !== 11) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '请输入正确的手机号'
+      })
+      return false
+    }
+    if (!this.idNo) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '证件号码不能为空'
+      })
+      return false
+    } else if (this.idNo.length !== 18) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '请输入正确的证件号码'
+      })
+      return false
+    }
+    return true
+  },
   requestSuc: function (res) {
     console.log('操作成功')
     const {status, data} = res
     if (status === 200) {
+      this.$vux.toast.hide()
       this.$vux.toast.show({
         text: data.returnMsg
       })

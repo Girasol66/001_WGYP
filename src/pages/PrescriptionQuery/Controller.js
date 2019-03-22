@@ -21,6 +21,7 @@ const controller = {
           if (listData && listData.length) {
             this.prescriptionList = data.data
           } else {
+            this.prescriptionList = []
             this.$vux.toast.show({
               text: '暂无数据'
             })
@@ -36,16 +37,9 @@ const controller = {
   // 查看结果
   checkResult: function (item) {
     console.log('check')
-    // console.log(item.id)
-    // const id = item.id
     const orderNo = item.orderNo
     const payFlg = item.payFlg
     const detail = item.detail
-    // const data = this.prescriptionList.filter((item) => {
-    //   if (item.patPatientID === id) {
-    //     return true
-    //   }
-    // })
     this.$router.push({
       path: '/Result',
       query: {
@@ -56,6 +50,39 @@ const controller = {
         detail: detail
       }
     })
+  },
+  validateForm: function () {
+    if (!this.mobileNo) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '手机号码不能为空'
+      })
+      return false
+    } else if (this.mobileNo.length !== 11) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '请输入正确的手机号'
+      })
+      return false
+    }
+    if (!this.idNo) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '证件号码不能为空'
+      })
+      return false
+    } else if (this.idNo.length !== 18) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '请输入正确的证件号码'
+      })
+      return false
+    }
+    return true
   }
 }
 export default controller

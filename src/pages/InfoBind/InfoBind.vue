@@ -46,7 +46,6 @@
 <script type="text/ecmascript-6">
 import { Group, XInput, Selector, XButton, XTable } from 'vux'
 import Controller from './Controller'
-
 export default {
   name: 'info-bind',
   components: {
@@ -66,11 +65,6 @@ export default {
         {value: 2, text: '港澳通行证'},
         {value: 3, text: '护照'}
       ],
-      info: {
-        mobileNo: '',
-        idNo: '',
-        idTypeCode: 1
-      },
       userList: []
     }
   },

@@ -83,6 +83,15 @@ const controller = {
       return false
     }
     return true
+  },
+  switchTab: function (state) {
+    if (state) {
+      this.payState = true
+      this.prescriptionList = this.pendingPaymentList
+    } else {
+      this.payState = false
+      this.prescriptionList = this.paidPaymentList
+    }
   }
 }
 export default controller

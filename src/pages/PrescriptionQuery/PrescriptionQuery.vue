@@ -23,6 +23,10 @@
         <button class="button" @click="queryPrescriptionList">查询</button>
       </div>
     </div>
+    <ul class="tab">
+      <li :class="{active: payState}" @click="switchTab(true)">待缴费</li>
+      <li :class="{active: !payState}" @click="switchTab(false)">已缴费</li>
+    </ul>
     <div class="module module2">
       <x-table :content-bordered="false" :cell-bordered="false">
         <tr>
@@ -66,6 +70,7 @@ export default {
   },
   data () {
     return {
+      payState: true,
       patPhoneNo: '',
       patIdNo: '',
       patIdTypeCode: 1,
@@ -82,6 +87,20 @@ export default {
   methods: Controller,
   created () {
     this.queryPrescriptionList()
+  },
+  computed: {
+    pendingPaymentList: function () {
+      console.log(this.patIdNo)
+      console.log(this.prescriptionList)
+      debugger
+      let list = this.prescriptionList.filter((item) => {
+        console.log(item)
+      })
+      return list
+    },
+    paidPaymentList: function () {
+      return []
+    }
   }
 }
 </script>
@@ -89,6 +108,22 @@ export default {
 <style scoped lang="less">
   @import '../../assets/less/variable';
   @import '../../assets/less/form';
+  .tab {
+    display: flex;
+    flex-direction: row;
+    li {
+      flex: 1;
+      height: 0.45rem;
+      line-height: 0.45rem;
+      font-size: 0.15rem;
+      border-bottom: 3px solid @white;
+      background: @white;
+      &.active {
+        border-color: @themeColor;
+        color: @themeColor;
+      }
+    }
+  }
   .module2 {
     padding: 0 0.15rem;
     font-size: @fontSizeTable;

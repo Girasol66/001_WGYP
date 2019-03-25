@@ -6,7 +6,7 @@
         <span class="list-title-item">缴费状态：{{payFlg}}</span>
       </div>
       <div class="pic-list" v-for="(item, index) in list" :key="index">
-        <img :src="item.img ? item.img : defaultImg" :oneror="defaultImg" alt="" class="list-pic">
+        <img :src="item.img ? item.img : img" :oneror="defaultImg" alt="" class="list-pic">
         <div class="list-info">
           <div class="list-title">{{item.drugName}}</div>
           <div class="list-sub-title">规格：{{item.type}} 数量：{{item.drugCnt}} {{item.drugUnit}}</div>
@@ -28,8 +28,8 @@ export default {
   name: 'result',
   data () {
     return {
-      defaultImg: 'this.src="' + require('../../assets/images/medicine_default.png') + '"',
-      // img: require('../../assets/images/medicine_default.png'),
+      // defaultImg: require('../../assets/images/medicine_default.png') + '"',
+      img: require('../../assets/images/medicine_default.png'),
       orderNo: '',
       payFlg: '',
       prescNo: '',
@@ -87,9 +87,13 @@ export default {
     flex-direction: row;
     color: #999;
     .list-title-item {
-      flex: 1;
       height: 0.44rem;
+      padding: 0 0.15rem;
       line-height: 0.44rem;
+      &:first-child {
+        flex: 1;
+        text-align: left;
+      }
     }
   }
   .pic-list {

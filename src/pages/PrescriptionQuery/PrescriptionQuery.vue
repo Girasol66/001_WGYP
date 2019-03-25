@@ -38,7 +38,7 @@
           <td>操作</td>
         </tr>
         <tbody>
-        <tr v-for="(item, index) in prescriptionList" v-if="(item.payFlg === 'Y'&&payState)||(item.payFlg === 'N'&!payState)" :key="index">
+        <tr v-for="(item, index) in prescriptionList" v-if="(item.payFlg === 'N'&&payState)||(item.payFlg === 'Y'&!payState)" :key="index">
           <td>{{index > 9 ? index : '0' + index}}</td>
           <td>{{item.prescNo}}</td>
           <td>{{item.patName}}</td>
@@ -88,19 +88,10 @@ export default {
   created () {
     this.queryPrescriptionList()
   },
-  computed: {
-    pendingPaymentList: function () {
-      console.log(this.patIdNo)
-      console.log(this.prescriptionList)
-      debugger
-      let list = this.prescriptionList.filter((item) => {
-        console.log(item)
-      })
-      return list
-    },
-    paidPaymentList: function () {
-      return []
-    }
+  mounted () {
+    window.addEventListener('popstate', function () {
+      window.close()
+    }, false)
   }
 }
 </script>

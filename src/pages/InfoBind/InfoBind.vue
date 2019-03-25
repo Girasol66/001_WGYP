@@ -71,6 +71,11 @@ export default {
   methods: Controller,
   created () {
     this.queryUserInfoList()
+  },
+  mounted () {
+    window.addEventListener('popstate', function (e) {
+      window.close()
+    }, false)
   }
 }
 </script>

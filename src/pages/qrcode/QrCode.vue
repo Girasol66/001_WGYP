@@ -76,7 +76,7 @@ export default {
       .qrcode {
         width: 2.61rem;
         height: 2.61rem;
-        background: gray;
+        /*background: #FAFAFA;*/
         &:before {
           content: '';
           position: absolute;

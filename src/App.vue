@@ -12,7 +12,7 @@ import apis from './api/api'
 export default {
   name: 'App',
   created () {
-    // this.exeLogin()
+    this.exeLogin()
   },
   methods: {
     exeLogin () {

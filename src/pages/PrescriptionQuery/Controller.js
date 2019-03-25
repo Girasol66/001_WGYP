@@ -82,15 +82,29 @@ const controller = {
       })
       return false
     }
+    if (!this.beginDate) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '开始日期不能为空'
+      })
+      return false
+    }
+    if (!this.endDate) {
+      this.$vux.toast.hide()
+      this.$vux.toast.show({
+        type: 'cancel',
+        text: '结束日期不能为空'
+      })
+      return false
+    }
     return true
   },
   switchTab: function (state) {
     if (state) {
       this.payState = true
-      this.prescriptionList = this.pendingPaymentList
     } else {
       this.payState = false
-      this.prescriptionList = this.paidPaymentList
     }
   }
 }

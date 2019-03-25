@@ -38,7 +38,7 @@
           <td>操作</td>
         </tr>
         <tbody>
-        <tr v-for="(item, index) in prescriptionList" :key="index">
+        <tr v-for="(item, index) in prescriptionList" v-if="(item.payFlg === 'Y'&&payState)||(item.payFlg === 'N'&!payState)" :key="index">
           <td>{{index > 9 ? index : '0' + index}}</td>
           <td>{{item.prescNo}}</td>
           <td>{{item.patName}}</td>

@@ -55,8 +55,8 @@ const getConfig = (config) => {
   if (data) {
     const {url, params} = opts
     config.url = url
-    // config.data = Object.assign({}, params, data)
-    config.data = Object.assign({}, params, data, {openId: '123'})
+    config.data = Object.assign({}, params, data)
+    // config.data = Object.assign({}, params, data, {openId: '123'})
   } else {
     const {url} = opts
     config.url = url

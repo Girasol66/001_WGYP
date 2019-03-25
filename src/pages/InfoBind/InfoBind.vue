@@ -70,10 +70,11 @@ export default {
   },
   methods: Controller,
   created () {
-    this.queryUserInfoList()
+    setTimeout(this.queryUserInfoList(), 1500)
   },
   mounted () {
-    window.addEventListener('popstate', function (e) {
+    history.pushState(null, null, document.URL)
+    window.addEventListener('popstate', function () {
       window.close()
     }, false)
   }

@@ -89,6 +89,7 @@ export default {
     this.queryPrescriptionList()
   },
   mounted () {
+    history.pushState(null, null, document.URL)
     window.addEventListener('popstate', function () {
       window.close()
     }, false)

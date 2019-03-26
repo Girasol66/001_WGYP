@@ -23,6 +23,9 @@ export default {
         sessionStorage.setItem('baseUrl', baseUrl)
         linkToWXPage()
       } else {
+        // if (this.exeCheckCode(code)) {
+        //   this.exeRefresh()
+        // }
         sessionStorage.setItem('wechatCode', code)
         this.getWechatOpenId(code)
       }

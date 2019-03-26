@@ -6,7 +6,7 @@
         <span class="list-title-item">缴费状态：{{payFlg}}</span>
       </div>
       <div class="pic-list" v-for="(item, index) in list" :key="index">
-        <img :src="item.img ? item.img : img" :oneror="defaultImg" alt="" class="list-pic">
+        <img :src="item.img ? item.img : img" alt="" class="list-pic">
         <div class="list-info">
           <div class="list-title">{{item.drugName}}</div>
           <div class="list-sub-title">规格：{{item.type}} 数量：{{item.drugCnt}} {{item.drugUnit}}</div>
@@ -16,8 +16,8 @@
     </div>
     <div class="action-area">
       <div class="total-price">合计：¥{{prescAmt}}</div>
-      <div class="button orange" @click="querySelfPayOrder">自付</div>
-      <div class="button primary" @click="queryAnotherPayOrder">代付</div>
+      <div class="button" :class="{orange: !hasPaid}" @click="querySelfPayOrder">自付</div>
+      <div class="button" :class="{primary: !hasPaid}" @click="queryAnotherPayOrder">代付</div>
     </div>
   </div>
 </template>
@@ -28,6 +28,7 @@ export default {
   name: 'result',
   data () {
     return {
+      hasPaid: false,
       // defaultImg: require('../../assets/images/medicine_default.png') + '"',
       img: require('../../assets/images/medicine_default.png'),
       orderNo: '',
@@ -65,14 +66,38 @@ export default {
   },
   methods: Controller,
   created () {
+    // JSON.parse(localStorage.getItem('resultList'))
     console.log(this.$route)
     console.log(this.$route.query)
-    this.orderNo = this.$route.query.orderNo
-    const payFlg = this.$route.query.payFlg
-    this.payFlg = payFlg === 'Y' ? '已缴' : '待缴'
-    this.list = this.$route.query.detail
-    this.prescNo = this.$route.query.prescNo
-    this.prescAmt = this.$route.query.prescAmt
+    this.loadData()
+    this.queryOrderPayRes()
+    // if (this.$route.query) {}
+    // this.orderNo = this.$route.query.orderNo
+    // const payFlg = this.$route.query.payFlg
+    // this.payFlg = payFlg === 'Y' ? '已缴' : '待缴'
+    // this.list = this.$route.query.detail
+    // this.prescNo = this.$route.query.prescNo
+    // this.prescAmt = this.$route.query.prescAmt
+  },
+  watch: {
+    '$route': function () {
+      this.loadData()
+    }
+    // loadData: function () {
+    //   let query = this.$route.query
+    //   if (JSON.stringify(query) === '{}') {
+    //     this.list = JSON.parse(sessionStorage.getItem('resultList'))
+    //     this.prescNo = JSON.parse(sessionStorage.getItem('resultList'))
+    //     this.prescAmt = JSON.parse(sessionStorage.getItem('resultList'))
+    //   } else {
+    //     const payFlg = this.$route.query.payFlg
+    //     this.payFlg = payFlg === 'Y' ? '已缴' : '待缴'
+    //     this.orderNo = this.$route.query.orderNo
+    //     this.list = this.$route.query.detail
+    //     this.prescNo = this.$route.query.prescNo
+    //     this.prescAmt = this.$route.query.prescAmt
+    //   }
+    // }
   }
 }
 </script>
@@ -154,6 +179,7 @@ export default {
       height: .44rem;
       color: @buttonFontColor;
       font-size: .18rem;
+      background: #ccc;
     }
     .orange {
       background: #ff6e00;

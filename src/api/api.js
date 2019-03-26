@@ -61,7 +61,7 @@ const apis = {
   },
   // 处方订单支付结果查询
   queryOrderPayRes: {
-    url: '/qryOrderPayRes',
+    url: '/order/qryOrderPayRes',
     params: {
       orderNo: '',
       prescNo: ''

@@ -4,7 +4,7 @@ import apis from '../../api/api'
 const controller = {
   // 查询处方
   queryPrescriptionList: function () {
-    const {openId} = sessionStorage
+    const {openId} = localStorage
     const data = {
       openId: openId,
       payStatus: 'O',

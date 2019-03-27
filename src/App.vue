@@ -62,7 +62,7 @@ export default {
           if (status === 200) {
             console.log(data.returnMsg)
             if (data.returnCode === 'SUCCESS') {
-              sessionStorage.setItem('openId', data.openId)
+              localStorage.setItem('openId', data.openId)
             } else {
               Vue.$vux.loading.show({
                 type: 'cancel',

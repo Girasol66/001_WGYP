@@ -8,7 +8,7 @@ const controller = {
       this.idTypeCode = params.idTypeCode
       this.idNo = params.idNo
     }
-    const {openId} = sessionStorage
+    const {openId} = localStorage
     if (!this.validateForm()) {
       return false
     }
@@ -37,7 +37,7 @@ const controller = {
         return false
       }
     })
-    const {openId} = sessionStorage
+    const {openId} = localStorage
     let data = {
       openId: openId,
       mobileNo: target[0].mobileNo,
@@ -52,7 +52,7 @@ const controller = {
       })
   },
   queryUserInfoList: function () {
-    const {openId} = sessionStorage
+    const {openId} = localStorage
     let data = {
       openId: openId
     }
@@ -78,6 +78,9 @@ const controller = {
       .catch(function (error) {
         console.log(error)
       })
+  },
+  exeRefresh: function () {
+    window.location.reload()
   },
   resetFormData: function () {
     this.mobileNo = ''

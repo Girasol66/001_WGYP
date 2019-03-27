@@ -70,7 +70,7 @@ export default {
   },
   methods: Controller,
   created () {
-    setTimeout(this.queryUserInfoList(), 1500)
+    this.queryUserInfoList()
   },
   mounted () {
     history.pushState(null, null, document.URL)

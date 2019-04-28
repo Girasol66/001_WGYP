@@ -65,6 +65,9 @@ const controller = {
           console.log(data)
           const listdata = data.data
           if (listdata && listdata.length) {
+            this.$vux.toast.show({
+              text: '查询成功'
+            })
             this.userList = listdata[0].userBindInfo
           } else {
             this.$vux.toast.show({
@@ -110,7 +113,7 @@ const controller = {
         text: '证件号码不能为空'
       })
       return false
-    } else if (this.idNo.length !== 18) {
+    } else if (!this.isCardNo(this.idNo)) {
       this.$vux.toast.hide()
       this.$vux.toast.show({
         type: 'cancel',
@@ -136,6 +139,18 @@ const controller = {
         text: data.returnMsg
       })
     }
+  },
+  isCardNo: function (cardNo) {
+    /**
+     * var re = /^[HMhm]{1}([0-9]{10}|[0-9]{8})$/;//港澳通行证
+     * 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X */
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)|(^[HMhm]{1}([0-9]{10}|[0-9]{8})$)/
+    if (reg.test(cardNo) === false) {
+      console.log('身份证输入不合法')
+      return false
+    }
+    console.log('合法的')
+    return true
   }
 }
 export default controller

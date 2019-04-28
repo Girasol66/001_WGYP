@@ -19,6 +19,9 @@ const controller = {
           console.log(data.returnMsg)
           const listData = data.data
           if (listData && listData.length) {
+            this.$vux.toast.show({
+              text: '查询成功'
+            })
             this.prescriptionList = data.data
           } else {
             this.prescriptionList = []

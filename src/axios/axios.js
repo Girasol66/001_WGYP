@@ -12,15 +12,15 @@ axios.interceptors.request.use(
     if (AccessToken) {
       config.headers = {'Authorization': AccessToken}
     }
-    Vue.$vux.loading.show({
-      text: '加载中...'
-    })
+    // Vue.$vux.loading.show({
+    //   text: '加载中...'
+    // })
     console.log('加载中')
     config = getConfig(config)
     return config
   }, error => {
     console.log('连接异常0')
-    Vue.$vux.loading.hide()
+    // Vue.$vux.loading.hide()
     console.log(error)
     return Promise.reject(error)
   })
@@ -55,8 +55,8 @@ const getConfig = (config) => {
   if (data) {
     const {url, params} = opts
     config.url = url
-    config.data = Object.assign({}, params, data)
-    // config.data = Object.assign({}, params, data, {openId: '123'})
+    // config.data = Object.assign({}, params, data)
+    config.data = Object.assign({}, params, data, {openId: '123'})
   } else {
     const {url} = opts
     config.url = url

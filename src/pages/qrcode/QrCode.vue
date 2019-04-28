@@ -12,12 +12,17 @@
 </template>
 
 <script type="text/ecmascript-6">
+import axios from '../../axios/axios'
+import apis from '../../api/api'
 import VueQr from 'vue-qr'
 export default {
   name: 'qr-code',
   components: {VueQr},
   data () {
     return {
+      orderNo: '',
+      prescNo: '',
+      hasPaid: null,
       value: '172727npm',
       config: {
         value: 'www.baidu.com', // 显示的值、跳转的地址
@@ -27,8 +32,42 @@ export default {
   },
   created () {
     console.log(this.$route.query)
-    this.config.value = this.$route.query.payUrl
-    this.prescAmt = this.$route.query.prescAmt
+    let query = this.$route.query
+    this.config.value = query.payUrl
+    this.prescAmt = query.prescAmt
+    this.orderNo = query.orderNo
+    this.prescNo = query.prescNo
+    this.hasPaid = setInterval(this.queryPayResult, 3000)
+  },
+  methods: {
+    toPaySuccess: function () {
+      this.$router.push({
+        path: '/Success'
+      })
+    },
+    queryPayResult: function () {
+      const data = {
+        orderNo: this.orderNo,
+        prescNo: this.prescNo
+      }
+      axios.post(apis.queryOrderPayRes, data)
+        .then((res) => {
+          console.log(res)
+          const {status, data} = res
+          if (status === 200) {
+            console.log(data)
+            if (data.payFlg === 'Y') {
+              clearInterval(this.hasPaid)
+              this.toPaySuccess()
+            }
+          } else {
+            // this.bindInfoFail()
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
   }
 }
 </script>

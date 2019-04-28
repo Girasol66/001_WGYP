@@ -98,7 +98,9 @@ const controller = {
       path: '/QrCode',
       query: {
         payUrl: payUrl,
-        prescAmt: this.prescAmt
+        prescAmt: this.prescAmt,
+        orderNo: this.orderNo,
+        prescNo: this.prescNo
       }
     })
   },

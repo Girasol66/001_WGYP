@@ -180,6 +180,10 @@ export default {
       color: @buttonFontColor;
       font-size: .18rem;
       background: #ccc;
+      border-right: 1px solid #ddd;
+      &:last-child {
+        border-right: none;
+      }
     }
     .orange {
       background: #ff6e00;

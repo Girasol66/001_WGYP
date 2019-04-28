@@ -12,8 +12,8 @@
         </select>
       </div>
       <div class="input-cell">
-        <div class="cell-title">身份证号码</div>
-        <input class="cell-input" type="number" v-model="idNo">
+        <div class="cell-title">证件号码</div>
+        <input class="cell-input" type="text" v-model="idNo">
       </div>
       <div class="button-cell">
         <button class="button" @click="bindInfo('new')">绑定</button>

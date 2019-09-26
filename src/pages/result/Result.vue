@@ -64,6 +64,12 @@ export default {
       // ]
     }
   },
+  mounted () {
+    history.pushState(null, null, document.URL)
+    window.addEventListener('popstate', function () {
+      window.close()
+    }, false)
+  },
   methods: Controller,
   created () {
     // JSON.parse(localStorage.getItem('resultList'))

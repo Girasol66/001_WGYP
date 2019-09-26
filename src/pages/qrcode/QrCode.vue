@@ -39,6 +39,12 @@ export default {
     this.prescNo = query.prescNo
     this.hasPaid = setInterval(this.queryPayResult, 3000)
   },
+  mounted () {
+    history.pushState(null, null, document.URL)
+    window.addEventListener('popstate', function () {
+      window.close()
+    }, false)
+  },
   methods: {
     toPaySuccess: function () {
       this.$router.push({

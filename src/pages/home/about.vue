@@ -6,7 +6,13 @@
 
 <script type="text/ecmascript-6">
 export default {
-  name: 'about'
+  name: 'about',
+  mounted () {
+    history.pushState(null, null, document.URL)
+    window.addEventListener('popstate', function () {
+      window.close()
+    }, false)
+  }
 }
 </script>
 <style scoped lang="less">

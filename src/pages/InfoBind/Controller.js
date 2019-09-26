@@ -114,12 +114,12 @@ const controller = {
       })
       return false
     } else if (!this.isCardNo(this.idNo)) {
-      this.$vux.toast.hide()
-      this.$vux.toast.show({
-        type: 'cancel',
-        text: '请输入正确的证件号码'
-      })
-      return false
+      // this.$vux.toast.hide()
+      // this.$vux.toast.show({
+      //   type: 'cancel',
+      //   text: '请输入正确的证件号码'
+      // })
+      // return false
     }
     return true
   },

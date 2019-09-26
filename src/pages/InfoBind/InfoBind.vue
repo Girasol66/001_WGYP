@@ -63,7 +63,8 @@ export default {
       certiTypes: [
         {value: 1, text: '身份证'},
         {value: 2, text: '港澳通行证'},
-        {value: 3, text: '护照'}
+        {value: 3, text: '护照'},
+        {value: 4, text: '会员证'}
       ],
       userList: []
     }

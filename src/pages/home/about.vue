@@ -8,10 +8,7 @@
 export default {
   name: 'about',
   mounted () {
-    history.pushState(null, null, document.URL)
-    window.addEventListener('popstate', function () {
-      window.close()
-    }, false)
+    this.utils.windowClose()
   }
 }
 </script>

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from './axios/axios'
+import utils from './utils'
 import {ToastPlugin, LoadingPlugin} from 'vux'
 
 // require('./mock/mock.js')
@@ -11,6 +12,7 @@ import {ToastPlugin, LoadingPlugin} from 'vux'
 Vue.use(ToastPlugin)
 Vue.use(LoadingPlugin)
 Vue.prototype.$axios = axios
+Vue.prototype.utils = utils
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

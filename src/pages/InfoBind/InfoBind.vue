@@ -74,10 +74,7 @@ export default {
     this.queryUserInfoList()
   },
   mounted () {
-    history.pushState(null, null, document.URL)
-    window.addEventListener('popstate', function () {
-      window.close()
-    }, false)
+    this.utils.windowClose()
   }
 }
 </script>

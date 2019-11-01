@@ -65,10 +65,7 @@ export default {
     }
   },
   mounted () {
-    history.pushState(null, null, document.URL)
-    window.addEventListener('popstate', function () {
-      window.close()
-    }, false)
+    this.utils.windowClose()
   },
   methods: Controller,
   created () {

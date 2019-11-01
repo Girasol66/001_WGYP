@@ -52,3 +52,16 @@ export const getSpecifiedDate = (index) => {
   console.log(date.getTime() + jetLag)
   return (date.getTime() + jetLag)
 }
+
+export default {
+  windowClose: () => {
+    const state = {
+      title: 'title',
+      url: '#'
+    }
+    history.pushState(state, null, '#')
+    window.addEventListener('popstate', function () {
+      WeixinJSBridge.call('closeWindow')
+    }, false)
+  }
+}
